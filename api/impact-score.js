@@ -7,14 +7,16 @@ export default async function handler(req, res) {
     if (!issn) return res.status(400).json({ error: "ISSN não fornecido" });
 
     const url = `https://www.resurchify.com/find/?query=${issn}`;
-    const executablePath = await chromium.executablePath || '/usr/bin/chromium-browser';
+    const executablePath = await chromium.executablePath;
 
-    console.log("Usando Chromium em:", executablePath);
+    if (!executablePath) {
+      throw new Error("Chromium não está disponível no ambiente Vercel.");
+    }
 
     const browser = await puppeteer.launch({
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
-      executablePath: executablePath,
+      executablePath,
       headless: chromium.headless,
     });
 
@@ -32,7 +34,7 @@ export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).json({ issn, score });
   } catch (error) {
-    console.error("Erro interno:", error); // <-- isso vai aparecer nos logs da Vercel
+    console.error("Erro interno:", error);
     res.status(500).json({ error: "Erro interno", details: error.message });
   }
 }
