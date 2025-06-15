@@ -1,0 +1,9 @@
+{
+  "name": "resurchify-impact-api-light",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "puppeteer-core": "^21.3.8",
+    "chrome-aws-lambda": "^10.1.0"
+  }
+}

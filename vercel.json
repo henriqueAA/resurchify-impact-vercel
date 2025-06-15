@@ -1,0 +1,9 @@
+{
+  "functions": {
+    "api/impact-score.js": {
+      "memory": 512,
+      "maxDuration": 10,
+      "runtime": "nodejs18.x"
+    }
+  }
+}
