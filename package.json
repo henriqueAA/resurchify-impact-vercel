@@ -2,8 +2,10 @@
   "name": "resurchify-impact-api-light",
   "version": "1.0.0",
   "type": "module",
-  "dependencies": {
-    "puppeteer-core": "^10.1.0",
-    "chrome-aws-lambda": "^10.1.0"
-  }
+"dependencies": {
+  "express": "^4.18.2",
+  "playwright": "^1.43.1",
+  "cors": "^2.8.5"
+}
+
 }
